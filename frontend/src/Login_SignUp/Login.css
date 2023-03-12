@@ -1,0 +1,13 @@
+.LoginSize {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.Background {
+  background-image: "url('https://ds6br8f5qp1u2.cloudfront.net/blog/wp-content/uploads/2021/03/7-Common-Types-of-Software-Testing@1x.png?x82505')";
+  background-size: 'cover';
+  height: '100vh';
+  color: '#f5f5f5';
+}
