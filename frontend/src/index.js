@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import LoginPage from './Login_SignUp/LoginPage'
 import SignUpPage from './Login_SignUp/SignUpPage'
+import SellerPage from './SellerHouse/SellerPage'
 import reportWebVitals from './reportWebVitals'
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
