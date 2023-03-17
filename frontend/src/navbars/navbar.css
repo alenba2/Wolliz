@@ -1,0 +1,27 @@
+.navbar-custom
+{
+    background-color: #7749F8;
+
+}
+
+.navbar-custom .navbar-brand
+{
+    color: white;
+}
+
+.nav-link
+{
+    color: white;
+}
+
+.navbar-toggler-icon
+{
+    color: white;
+}
+
+#signOut
+{
+    color: white;
+    border-color: white;
+    margin-left:30px;
+}
