@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap'
 
 function LoginBox() {
   return (
-    <Card style={{ width: '30rem' }}>
+    <Card style={{ width: '50rem' }}>
       <Card.Body>
         <Card.Title style={{ textAlign: 'center' }}>Sign Up</Card.Title>
         <Form>

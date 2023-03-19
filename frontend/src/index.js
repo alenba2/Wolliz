@@ -4,6 +4,7 @@ import './index.css'
 import LoginPage from './Login_SignUp/LoginPage'
 import SignUpPage from './Login_SignUp/SignUpPage'
 import SellerPage from './SellerHouse/SellerPage'
+import UserListingPage from './UserListings/UserListingPage'
 import reportWebVitals from './reportWebVitals'
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -11,7 +12,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <LoginPage />
+    <UserListingPage />
   </React.StrictMode>
 )
 
