@@ -7,7 +7,10 @@ import backgroundImage from './Wolliz-1.png'
 //navbar component for general pages when logged in
 function Navbar() {
   return (
-    <div>
+    <div
+      style={{
+        color: 'white',
+      }}>
       <nav className='navbar navbar-custom navbar-expand-md'>
         <div className='container-fluid'>
           <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
@@ -93,8 +96,8 @@ function Navbar2() {
           </div>
           <div className='mx-auto order-0'>
             <a className='navbar-brand mx-auto' href='#'>
-              <img
-                src='/Wolliz-1.png'
+              <Image
+                src={backgroundImage}
                 alt='Logo'
                 width='30'
                 height='24'
