@@ -1,6 +1,7 @@
 import Navbars from '../navbars/navbar';
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import house from './images/house.webp'
 
 
 
@@ -12,14 +13,14 @@ export default function HouseInfo()
 
     <div className="houseinfo">
 
-        <Navbar/>
+        <Navbars/>
 
         <div className="container">
            
            <div className="d-flex justify-content-evenly">
 
                 <div id="houseImage" className="flex">
-                    <img className="img-fluid rounded img-thumbnail" src="/images/house.webp" alt="House"/>
+                    <img className="img-fluid rounded img-thumbnail" src={house} alt="House"/>
                 </div>
 
                 <div className="flex">
