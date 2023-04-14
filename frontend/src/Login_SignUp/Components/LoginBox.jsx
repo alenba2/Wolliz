@@ -13,7 +13,8 @@ function LoginBox(props) {
             <Form.Control
               type='email'
               placeholder='Enter email'
-              value={props.username}
+              value={props.email}
+              onChange={(e) => props.handleCallBackEmail(e.target.value)}
             />
             <Form.Text className='text-muted'>
               We'll never share your email with anyone else.
@@ -26,10 +27,14 @@ function LoginBox(props) {
               type='password'
               placeholder='Password'
               value={props.password}
+              onChange={(e) => props.handleCallBackPassword(e.target.value)}
             />
           </Form.Group>
 
-          <Button variant='primary' type='submit'>
+          <Button
+            variant='primary'
+            type='submit'
+            onClick={(e) => props.handleCallBackSubmit()}>
             Submit
           </Button>
           <br />

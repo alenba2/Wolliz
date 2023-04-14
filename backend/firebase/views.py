@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from .serializers import TodoSerializer
 from .models import Todo
 from dotenv import load_dotenv
+from rest_framework import status
 
 load_dotenv()
 
@@ -63,22 +64,30 @@ class MyLogin(APIView):
     def get(self, request):
         data = database.child("Data").get().val()
         return Response(data)
+
 # Adds Data
 class PushData(APIView):
     # Pushes data to server
     def post(self, request):
-    #     data = database.child("Data").push({
-    #     'alanisawesome': {
-    #         'date_of_birth': 'June 23, 1912',
-    #         'full_name': 'Alan Turing'
-    # },
-    #     })
-        return Response(request)
+
+        # Grabs params in first col, but if its null or doesn't exist it will return whatever on the second
+
+        email = request.POST.get('email', 'not')
+        password = request.POST.get('password', 'okay')
+
+        res = request.POST
+
+        data = database.child("Login").push({
+            'email': email,
+            'password': password
+        })
+
+        return Response(data)
 
 # Sets/Updates Data
 class SetData(APIView):
     
-    def put(self, request):
+    def put(self, request, format=None):
         
         data = database.child("Da")
 
@@ -89,13 +98,14 @@ class SetData(APIView):
             return Response("has been updated")
         except:
             return Response("something went wrong")
+
 # deletes data   
 class DeleteData(APIView):
     
     def delete(self, request):
         
         try:
-            data = database.child("Da").remove()
+            data = database.child("Login").remove()
             return Response("Deleted")
         except:
             return Response("something went wrong")
