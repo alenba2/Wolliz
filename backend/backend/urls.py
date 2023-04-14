@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from firebase import views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  
+    path('api/', views.MyLogin.as_view() , name='GetData'),
+    path('api/push/', views.PushData.as_view() , name='PushData'),
+    path('api/set/', views.SetData.as_view() , name='SetData'),
+    path('api/delete/', views.DeleteData.as_view() , name='delete'),
+    
 ]
