@@ -37,6 +37,7 @@ function LoginPage() {
     data.append('email', email)
     data.append('password', password)
 
+    // Data needs to check if it exist in database
     axios
       .post('api/push/', data)
       .then((res) => {
