@@ -35,13 +35,14 @@ function LoginPage() {
 
     // both pass checks
 
+    // Check if data already EXIST
     let data = new FormData()
 
     data.append('email', email)
     data.append('password', password)
 
     axios
-      .post('api/push/', data)
+      .post('api/Signup/', data)
       .then((res) => {
         console.log(res)
       })

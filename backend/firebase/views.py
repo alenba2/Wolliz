@@ -11,6 +11,7 @@ from .serializers import TodoSerializer
 from .models import Todo
 from dotenv import load_dotenv
 from rest_framework import status
+from collections import OrderedDict
 
 load_dotenv()
 
@@ -75,8 +76,6 @@ class PushData(APIView):
         email = request.POST.get('email', 'not')
         password = request.POST.get('password', 'okay')
 
-        res = request.POST
-
         data = database.child("Login").push({
             'email': email,
             'password': password
@@ -110,8 +109,41 @@ class DeleteData(APIView):
         except:
             return Response("something went wrong")
 
+class Login(APIView):
+
+    def post(self, request):
+        data = database.child("LoginSignUp").get()
+
+        email = request.POST.get('email', 'NULL')    
+        password = request.POST.get('password', 'NULL')
         
-        
+        for user in data:
+
+            if user.val()['email'] != email or user.val()['password'] != password:
+                continue
+
+            return Response('Success: User has been found')
+
+        return Response('Error: User does not exist or Password is not correct')
 
 
+class Signup(APIView):
+
+    def post(self, request):
+        data = database.child("LoginSignUp").get()
+
+        email = request.POST.get('email', 'NULL')
+        password = request.POST.get('password', 'NULL')
+
+        # Checks if email exists in database
+        for user in data:
+            if user.val()['email'] == email:
+                return Response('Error: Email already exists')
+
+        res = database.child("LoginSignUp").push({
+            'email': email,
+            'password': password
+        })
+
+        return Response(res)
         

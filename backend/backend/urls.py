@@ -25,5 +25,6 @@ urlpatterns = [
     path('api/push/', views.PushData.as_view() , name='PushData'),
     path('api/set/', views.SetData.as_view() , name='SetData'),
     path('api/delete/', views.DeleteData.as_view() , name='delete'),
-    
+    path('api/Login/', views.Login.as_view() , name='Login'),
+    path('api/Signup/', views.Signup.as_view() , name='Signup'),
 ]
