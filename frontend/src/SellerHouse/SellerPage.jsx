@@ -14,7 +14,6 @@ function SellerPage() {
   const [squareFeet, setSquareFeet] = useState('')
   const [bedroom, setBedroom] = useState('')
   const [bathroom, setBathroom] = useState('')
-  const [garage, setGarage] = useState('')
   const [price, setPrice] = useState('')
   const [amenities, setAmenities] = useState('')
   const [file, setFile] = useState('')
@@ -52,9 +51,6 @@ function SellerPage() {
   function handleCallBackBathroom(event) {
     setBathroom(event)
   }
-  function handleCallBackGarage(event) {
-    setGarage(event)
-  }
   function handleCallBackPrice(event) {
     setPrice(event)
   }
@@ -76,7 +72,6 @@ function SellerPage() {
     data.append('squareFeet', squareFeet)
     data.append('bedroom', bedroom)
     data.append('bathroom', bathroom)
-    data.append('garage', garage)
     data.append('price', price)
     data.append('amenities', amenities)
     data.append('file', file)
@@ -120,7 +115,6 @@ function SellerPage() {
         squareFeet={squareFeet}
         bedroom={bedroom}
         bathroom={bathroom}
-        garage={garage}
         price={price}
         amenities={amenities}
         file={file}
@@ -131,7 +125,6 @@ function SellerPage() {
         handleCallBackSquareFeet={handleCallBackSquareFeet}
         handleCallBackBedroom={handleCallBackBedroom}
         handleCallBackBathroom={handleCallBackBathroom}
-        handleCallBackGarage={handleCallBackGarage}
         handleCallBackPrice={handleCallBackPrice}
         handleCallBackAmenities={handleCallBackAmenities}
         handleCallBackFile={handleCallBackFile}

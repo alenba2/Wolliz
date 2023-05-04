@@ -61,12 +61,6 @@ function SellerBox(props) {
               onChange={(e) => props.handleCallBathroom(e.target.value)} />
           </Form.Group>
 
-          <Form.Group as={Col} controlId='formBasicGarage'>
-            <Form.Label>Number of Garages</Form.Label>
-            <Form.Control type='garage' placeholder='Enter # of garages' value={props.garage}
-              onChange={(e) => props.handleCallGarage(e.target.value)} />
-          </Form.Group>
-
           </Row>
 
           <Form.Group className='mb-3' controlId='formBasicPrice'>
