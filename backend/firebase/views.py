@@ -13,6 +13,18 @@ from dotenv import load_dotenv
 from rest_framework import status
 from collections import OrderedDict
 
+# ML
+import json # will be needed for saving preprocessing details
+import numpy as np # for data manipulation
+import pandas as pd # for data manipulation
+from sklearn.model_selection import train_test_split # will be used for data split
+from sklearn.preprocessing import LabelEncoder # for preprocessing
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+
 load_dotenv()
 
 # Create your views here.
@@ -33,6 +45,7 @@ config = {
 firebase=pyrebase.initialize_app(config)
 authe = firebase.auth()
 database=firebase.database()
+storage = firebase.storage()
 
 
 # An example code
@@ -146,4 +159,15 @@ class Signup(APIView):
         })
 
         return Response(res)
+
+class getPrediction(APIView):
         
+    def post(self, request):
+        
+        rfModel = storage.child('ML folder/model.joblib')
+
+        
+
+        res = 'hello world'
+
+        return Response(res)

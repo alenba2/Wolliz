@@ -27,4 +27,5 @@ urlpatterns = [
     path('api/delete/', views.DeleteData.as_view() , name='delete'),
     path('api/Login/', views.Login.as_view() , name='Login'),
     path('api/Signup/', views.Signup.as_view() , name='Signup'),
+    path('api/getPrediction/', views.getPrediction.as_view() , name='GetPrediction'),
 ]
