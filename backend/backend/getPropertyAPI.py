@@ -41,6 +41,10 @@ class ResponseManager:
         return unmarshalledAddress
 
     def setPropertyResponseJson(self): 
+        """
+        Requests the property response json from Zillow's endpoint
+        Sets the instance variable for getPropertyResponseJson() to work
+        """
         url = "https://zillow-com1.p.rapidapi.com/property"
 
         queryString = {
