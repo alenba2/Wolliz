@@ -39,7 +39,7 @@ class ResponseManager:
         
         unmarshalledAddress = streetAddress + ', ' + city + ', ' + state + ' ' + zipCode
         return unmarshalledAddress
-
+    
     def setPropertyResponseJson(self): 
         """
         Requests the property response json from Zillow's endpoint
@@ -85,5 +85,7 @@ class ResponseManager:
         return self.propertyResponseJson['livingAreaValue']
 
 
+x = ResponseManager(79842311)
+print(x.getPropertyResponseJson())
 
 
