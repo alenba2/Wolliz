@@ -1,0 +1,190 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #f5f5f5;
+}
+
+header {
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	padding: 20px 0;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	margin: 0 10px;
+}
+
+nav a {
+	color: #333;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #ff5a5f;
+}
+
+.login {
+	display: flex;
+	align-items: center;
+}
+
+.login a {
+	margin-right: 10px;
+}
+
+.login button {
+	background-color: #ff5a5f;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 8px 20px;
+	cursor: pointer;
+}
+
+.search {
+	background-image: url(listing1.jpg);
+	background-size: cover;
+	background-position: center center;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search h1 {
+	color: #fff;
+	font-size: 60px;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+main {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.property {
+	flex-basis: 65%;
+	display: flex;
+}
+
+.photo {
+	flex-basis: 50%;
+	margin-right: 20px;
+}
+
+.photo img {
+	width: 100%;
+	height: auto;
+}
+
+.details {
+	flex-basis: 50%;
+}
+
+.details h2 {
+	margin-top: 0;
+}
+
+.details .price {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+.details .beds-baths-sqft {
+	margin: 10px 0;
+}
+
+.details .description {
+	margin: 10px 0;
+}
+
+.features {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.feature {
+	flex-basis: calc(33.33% - 10px);
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.feature img {
+	margin-right: 5px;
+}
+
+.map {
+	flex-basis: 35%;
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.map-container {
+	flex-basis: 100%;
+	margin-bottom: 10px;
+}
+
+.map img {
+	width: 100%;
+	height: auto;
+}
+
+.address {
+	background-color: #fff;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.contact-agent {
+	flex-basis: 100%;
+	margin-top: 20px;
+}
+
+.contact-agent h2 {
+	margin-top: 0;
+}
+
+.contact-agent form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.contact-agent input,
+.contact-agent textarea {
+	flex-basis: 100%;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.contact

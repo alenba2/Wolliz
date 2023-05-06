@@ -37,6 +37,9 @@ let getPropertyAddress =  async (propertyResponse) => {
     let displayAddress = streetAddress + ", " + city + ", " + state + " " + zipcode;
     return displayAddress;
 }
+let getPropertyAppliances = async (propertyResponse) => {
+    return propertyResponse['resoFacts']['appliances'];
+}
 let getPropertyImage = async (propertyResponse) => {
     return propertyResponse['images'];
 }
@@ -67,8 +70,10 @@ let getPropertyZestimate = async (propertyResponse) => {
 let retrieveData = async () => {
     let propertyResponseJson = "";
     let propertyImagesJson = "";
+    let appliaces = [];
     let imgSrc = [];
     let bedrooms = "";
+    let description = "";
     let bathrooms = "";
     let livingAreaValue = "";
     let address = "";
@@ -91,6 +96,11 @@ let retrieveData = async () => {
         });
     console.log(propertyResponseJson);
     console.log(propertyImagesJson);
+    await getPropertyAppliances(propertyResponseJson).then((response) => {
+        for (let i = 0; i < response.length; i++) {
+            appliaces.push(response[i]);
+        }
+    });
     await getPropertyImage(propertyImagesJson).then((response) => {
         for (let i = 0; i < response.length; i++) {
             imgSrc.push(response[i]);
@@ -101,6 +111,9 @@ let retrieveData = async () => {
     });
     await getPropertyBathrooms(propertyResponseJson).then((response) => {
         bathrooms = response;
+    });
+    await getPropertyDescription(propertyResponseJson).then((response) => {
+        description = response;
     });
     await getPropertyLivingAreaValue(propertyResponseJson).then((response) => {
         livingAreaValue = response;
@@ -114,9 +127,11 @@ let retrieveData = async () => {
     await getPropertyZestimate(propertyResponseJson).then((response) => {
         zestimate = response;
     });
+    details['appliances'] = appliaces;
     details['imgSrc'] = imgSrc;
     details['bedrooms'] = bedrooms;
     details['bathrooms'] = bathrooms;
+    details['description'] = description;
     details['livingAreaValue'] = livingAreaValue;
     details['address'] = address;
     details['price'] = price;
@@ -147,20 +162,35 @@ let displayData = (retrievedData) => {
     the image Zillow uses on their main house page
     */
 
+    let appliances = retrievedData['appliances'];
     let imgSrc = retrievedData['imgSrc'];
     let bedrooms = retrievedData['bedrooms'];
     let bathrooms = retrievedData['bathrooms'];
+    let description = retrievedData['description'];
     let squareFootage = retrievedData['livingAreaValue'];
     let address = retrievedData['address'];
     let price = priceToString(retrievedData['price']);
     let zillowEstimate = priceToString(retrievedData['zestimate']);
 
-    
-    document.getElementById('bedrooms').innerHTML = bedrooms + " bd";
-    document.getElementById('bathrooms').innerHTML = bathrooms + " ba";
-    document.getElementById('livingAreaSpace').innerHTML = squareFootage + " sqft";
-    document.getElementById('address').innerHTML = address;
-    document.getElementById('price').innerHTML = "Listed price: " + price;
+    let applianceLength = appliances.length;
+    for (let i = 0; i < applianceLength; i++) {
+        const currentAppliance = appliances[i];
+        const divAppliances = document.getElementById('applianceList');
+        const childAppliance = document.createElement('div');
+        childAppliance.className = "appliance";
+        let childApplianceParagraph = document.createElement('p');
+        childApplianceParagraph.innerHTML = currentAppliance;
+        childAppliance.appendChild(childApplianceParagraph);
+        divAppliances.appendChild(childAppliance);
+        
+    }
+    document.getElementById('imageSource').src = imgSrc[0];
+   
+    document.getElementById('bed-bath-size').innerHTML = bedrooms + " bd | " + bathrooms + " ba | " + 
+    squareFootage + " sqft";
+    document.getElementById('houseDescription').innerHTML = description;
+    document.getElementById('houseAddress').innerHTML = address;
+    document.getElementById('housePrice').innerHTML = price;
     document.getElementById('zestimate').innerHTML = "Zillow Estimate: " + zillowEstimate;
 }   
 
