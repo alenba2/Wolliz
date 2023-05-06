@@ -12,13 +12,21 @@ function LoginPage() {
 
   // Used to get information
   // useEffect(() => {
-  //   axios
-  //     .get('/api/get/')
-  //     .then((res) => {
-  //       // console.log(res.data[0])
+  //   let data = new FormData()
+  //   data = data.append('data', '1,1,1,1,1,1,1')
 
-  //       setEmail(res.data[0].Username)
-  //       setPassword(res.data[0].Password)
+  //   axios
+  //     .post(
+  //       'https://op7v5n6uuk.execute-api.us-east-2.amazonaws.com/getPred',
+  //       data,
+  //       {
+  //         headers: {
+  //           'Access-Control-Allow-Origin': '*',
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       console.log(res)
   //     })
   //     .catch((err) => console.log(err))
   // }, [])

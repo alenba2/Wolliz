@@ -12,18 +12,9 @@ from .models import Todo
 from dotenv import load_dotenv
 from rest_framework import status
 from collections import OrderedDict
+from django.http import JsonResponse
 
-# ML
-import json # will be needed for saving preprocessing details
-import numpy as np # for data manipulation
-import pandas as pd # for data manipulation
-from sklearn.model_selection import train_test_split # will be used for data split
-from sklearn.preprocessing import LabelEncoder # for preprocessing
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import classification_report
-from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
+import requests
 
 load_dotenv()
 
@@ -164,10 +155,13 @@ class getPrediction(APIView):
         
     def post(self, request):
         
-        rfModel = storage.child('ML folder/model.joblib')
+        url = 'https://op7v5n6uuk.execute-api.us-east-2.amazonaws.com/getPred'
 
-        
+        data = JsonResponse({
+            'data': '1,1,1,1,1,1,1'
+        })
 
-        res = 'hello world'
+        response = requests.post(url,data=data)
 
-        return Response(res)
+
+        return Response(response)

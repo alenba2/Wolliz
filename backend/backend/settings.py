@@ -131,6 +131,8 @@ CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 rest_framework = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'REST_framework.authentication.SessionAuthentication',
