@@ -111,12 +111,14 @@ let displayData = (retrievedData) => {
     let price = priceToString(retrievedData['price']);
     let zillowEstimate = priceToString(retrievedData['zestimate']);
 
-    document.getElementById('bedrooms').innerHTML = bedrooms + " bd";
-    document.getElementById('bathrooms').innerHTML = bathrooms + " ba";
+    
+    document.getElementById('bedrooms').innerHTML = bedrooms + " Bedrooms";
+    document.getElementById('bathrooms').innerHTML = bathrooms + " Bathrooms";
     document.getElementById('livingAreaSpace').innerHTML = squareFootage + " sqft";
     document.getElementById('address').innerHTML = address;
     document.getElementById('price').innerHTML = "Listed price: " + price;
     document.getElementById('zestimate').innerHTML = "Zillow Estimate: " + zillowEstimate;
+    
 }   
 
 let priceToString = (price) => {
@@ -128,3 +130,5 @@ let priceToString = (price) => {
       });
       return formatter.format(price);
 }
+
+export { retrieveData, displayData };

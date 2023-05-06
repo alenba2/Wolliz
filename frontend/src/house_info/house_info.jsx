@@ -2,9 +2,41 @@ import Navbars from '../navbars/navbar'
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import house from './images/house.webp'
+import { useEffect, useState } from 'react';
+import {
+  retrieveData,
+  displayData,
+} from '../apis/getPropertyAPI';
+
+
+
 
 export default function HouseInfo() {
+
+  const [propertyData, setPropertyData] = useState({});
+
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await retrieveData;
+        //console.log(data);
+        setPropertyData(data); // assuming you have a state variable named propertyData to store the retrieved data
+        //console.log(propertyData);
+        displayData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+  
+
   return (
+
+    
     <div className='houseinfo'>
       <Navbars />
 
@@ -21,23 +53,26 @@ export default function HouseInfo() {
           <div className='flex'>
             {/* text for house info */}
             <h1 className='text-center fw-bold'>
-              User's House
+              House Information
               <br />
             </h1>
             <br />
-            <p className='text-center fs-5 fw-semibold'>
-              1833 Fake Street, Montpelier, Vermont, 93849
+            <p id='address' className='text-center fs-5 fw-semibold'>
+              1833 Fake Street, Montpelier, Vermont, 938489 
             </p>
             <br />
-            <p className='text-center fs-5 fw-semibold'>
+            <p id='zestimate' className='text-center fs-5 fw-semibold'>
               Predicted Price: $600,000
             </p>
-            <p className='text-center fs-5 fw-semibold'>
+            <p id='livingAreaSpace' className='text-center fs-5 fw-semibold'> 
+              Square Feet: 2809
+            </p>
+            <p id='price' className='text-center fs-5 fw-semibold'>
               Actual Price: $543,400
             </p>
             <br />
-            <p className='text-center fs-5 fw-semibold'>3 Bedrooms</p>
-            <p className='text-center fs-5 fw-semibold'>2 Bathrooms</p>
+            <p id='bedrooms' className='text-center fs-5 fw-semibold'>Bedrooms</p>
+            <p id='bathrooms' className='text-center fs-5 fw-semibold'>2 Bathrooms</p>
             <p className='text-center fs-5 fw-semibold'>1 Garage</p>
             <br />
 
