@@ -22,7 +22,6 @@ export default function HouseInfo() {
         const data = await retrieveData;
         //console.log(data);
         setPropertyData(data); // assuming you have a state variable named propertyData to store the retrieved data
-        //console.log(propertyData);
         displayData(data);
       } catch (error) {
         console.log(error);
@@ -32,6 +31,7 @@ export default function HouseInfo() {
     fetchData();
   }, []);
 
+  
   
 
   return (
@@ -44,6 +44,7 @@ export default function HouseInfo() {
         <div className='d-flex justify-content-evenly'>
           <div id='houseImage' className='flex'>
             <img
+              id='h_img'
               className='img-fluid rounded img-thumbnail'
               src={house}
               alt='House'
