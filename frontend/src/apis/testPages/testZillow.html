@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>123 Main St. | Zillow</title>
+	<link rel="stylesheet" href="testZillowPage.css">
+	<script src="testonload.jsx"></script>
+</head>
+<body onload="retrieveData();">
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">Buy</a></li>
+				<li><a href="#">Rent</a></li>
+				<li><a href="#">Sell</a></li>
+				<li><a href="#">Mortgages</a></li>
+				<li><a href="#">Agents</a></li>
+			</ul>
+			<div class="login">
+				<a href="#">Sign In</a>
+				<button>Join</button>
+			</div>
+		</nav>
+		<div class="search">
+			<h1 id="houseAddress">123 Main St.</h1>
+		</div>
+	</header>
+	<main>
+		<section class="property">
+			<div class="photo">
+				<img id="imageSource" src="" alt="">
+			</div>
+			<div class="details">
+				<h2 id="houseAddress">123 Main St.</h2>
+				<p id="housePrice" class="price">$500,000</p>
+				<p id="bed-bath-size" class="beds-baths-sqft">3 bd | 2 ba | 1,500 sqft</p>
+				<p id="houseDescription" class="description">Charming 3 bedroom, 2 bathroom home in a great neighborhood. Features hardwood floors, updated kitchen, and beautiful backyard.</p>
+				<div id="applianceList" class="appliances">
+			    </div>
+			</div>
+		</section>
+		<section class="map">
+			<div class="map-container">
+				<img src="map.png" alt="Map">
+			</div>
+			<div class="address">
+				<p>123 Main St.</p>
+				<p>San Francisco, CA 94109</p>
+			</div>
+		</section>
+		<section class="contact-agent">
+			<h2>Contact Agent</h2>
+			<form>
+				<input type="text" placeholder="Name">
+				<input type="email" placeholder="Email">
+				<input type="tel" placeholder="Phone">
+				<textarea placeholder="Message"></textarea>
+				<button>Send Message</button>
+			</form>
+		</section>
+	</main>
+	<footer>
+		<div class="links">
+			<a href="#">About Zillow</a>
+			<a href="#">Zillow Blog</a>
+			<a href="#">Mobile Apps</a>
+			<a href="#">Zillow Research</a>
+			<a href="#">Jobs</a>
+			<a href="#">Help</a>
+		</div>
+		</footer>
