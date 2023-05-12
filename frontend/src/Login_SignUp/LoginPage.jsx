@@ -39,7 +39,9 @@ function LoginPage() {
   }
 
   // On click will push data to database
-  function handleCallBackSubmit() {
+  function handleCallBackSubmit(event) {
+    event.preventDefault() // 👈️ prevent page refresh
+
     let data = new FormData()
 
     data.append('email', email)
@@ -47,7 +49,7 @@ function LoginPage() {
 
     // Data needs to check if it exist in database
     axios
-      .post('/api/Login/', data)
+      .post('http://localhost:8000/api/Login/', data)
       .then((res) => {
         console.log(res)
       })

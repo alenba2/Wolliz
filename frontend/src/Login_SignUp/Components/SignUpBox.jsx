@@ -44,7 +44,7 @@ function SignUpBox(props) {
           <Button
             variant='primary'
             type='submit'
-            onClick={(e) => props.handleCallBackSubmit()}>
+            onClick={(e) => props.handleCallBackSubmit(e)}>
             Submit
           </Button>
 

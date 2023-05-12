@@ -23,7 +23,9 @@ function LoginPage() {
 
   // On click will push data to database
 
-  function handleCallBackSubmit() {
+  function handleCallBackSubmit(event) {
+    event.preventDefault() // 👈️ prevent page refresh
+
     if (!(password === cpassword)) {
       console.log('Passwords do not match')
       return
