@@ -17,6 +17,7 @@ function SellerPage() {
   const [price, setPrice] = useState('')
   const [amenities, setAmenities] = useState('')
   const [file, setFile] = useState('')
+
   // Used to get information
   // useEffect(() => {
   //   axios
@@ -62,7 +63,9 @@ function SellerPage() {
   }
 
   // On click will push data to database
-  function handleCallBackSubmit() {
+  function handleCallBackSubmit(event) {
+    event.preventDefault() // 👈️ prevent page refresh
+
     let data = new FormData()
 
     data.append('address', address)
@@ -78,7 +81,7 @@ function SellerPage() {
 
     // Data needs to check if it exist in database
     axios
-      .post('api/Sell/', data)
+      .post('http://localhost:8000/api/pushHouseInfo/', data)
       .then((res) => {
         console.log(res)
       })
@@ -107,28 +110,28 @@ function SellerPage() {
       </div>
 
       <div className='SellerSize'>
-        <SellerBox 
-        address={address}
-        state={state}
-        city={city}
-        zip={zip}
-        squareFeet={squareFeet}
-        bedroom={bedroom}
-        bathroom={bathroom}
-        price={price}
-        amenities={amenities}
-        file={file}
-        handleCallBackAddress={handleCallBackAddress}
-        handleCallBackState={handleCallBackState}
-        handleCallBackCity={handleCallBackCity}
-        handleCallBackZip={handleCallBackZip}
-        handleCallBackSquareFeet={handleCallBackSquareFeet}
-        handleCallBackBedroom={handleCallBackBedroom}
-        handleCallBackBathroom={handleCallBackBathroom}
-        handleCallBackPrice={handleCallBackPrice}
-        handleCallBackAmenities={handleCallBackAmenities}
-        handleCallBackFile={handleCallBackFile}
-        handleCallBackSubmit={handleCallBackSubmit}
+        <SellerBox
+          address={address}
+          state={state}
+          city={city}
+          zip={zip}
+          squareFeet={squareFeet}
+          bedroom={bedroom}
+          bathroom={bathroom}
+          price={price}
+          amenities={amenities}
+          file={file}
+          handleCallBackAddress={handleCallBackAddress}
+          handleCallBackState={handleCallBackState}
+          handleCallBackCity={handleCallBackCity}
+          handleCallBackZip={handleCallBackZip}
+          handleCallBackSquareFeet={handleCallBackSquareFeet}
+          handleCallBackBedroom={handleCallBackBedroom}
+          handleCallBackBathroom={handleCallBackBathroom}
+          handleCallBackPrice={handleCallBackPrice}
+          handleCallBackAmenities={handleCallBackAmenities}
+          handleCallBackFile={handleCallBackFile}
+          handleCallBackSubmit={handleCallBackSubmit}
         />
       </div>
     </div>

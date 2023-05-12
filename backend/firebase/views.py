@@ -14,6 +14,9 @@ from rest_framework import status
 from collections import OrderedDict
 from django.http import JsonResponse
 
+from sklearn.preprocessing import LabelEncoder # for preprocessing
+import joblib # for saving algorithm and preprocessing objects
+
 import requests
 
 load_dotenv()
@@ -151,17 +154,74 @@ class Signup(APIView):
 
         return Response(res)
 
+class pushHouseInfo(APIView):
+    def post(self, request):
+
+        address = request.POST.get('address', 'NULL')
+        state = request.POST.get('state', 'NULL')
+        city = request.POST.get('city', 'NULL')
+        zip = request.POST.get('zip', 'NULL')
+        squareFeet = request.POST.get('squareFeet', 'NULL')
+        bedroom = request.POST.get('bedroom', 'NULL')
+        bathroom = request.POST.get('bathroom', 'NULL')
+        price = request.POST.get('price', 'NULL')
+        amenities = request.POST.get('amenities', 'NULL')
+        file = request.POST.get('file', 'NULL')
+
+        label_encoder = joblib.load('encoders.joblib')
+
+        encode_add = [-1]
+        encode_city = [-1]
+        encode_state = [-1]
+
+        try:
+            encode_add = label_encoder['Address'].transform([address])
+        except:
+            print('Unique Address Variable detected')
+
+        try:
+            encode_city = label_encoder['City'].transform([city])
+        except:
+            print('Unique City Variable detected')
+
+        try:
+            encode_state = label_encoder['State'].transform([state])
+        except:
+            print('Unique State Variable detected')
+
+        to_predict = str(encode_add[0]) + ',' + str(encode_city[0])  + ',' + str(encode_state[0])  + ',' + str(zip) + ',' + str(bathroom) + ',' + str(bedroom) + ',' + str(squareFeet)
+
+        print(to_predict)
+
+        # data = database.child("HouseListing").push({
+
+        #     'address' : address,
+        #     'state': state,
+        #     'city': city,
+        #     'zip': zip,
+        #     'squareFeet' : squareFeet,
+        #     'bedroom' : bedroom,
+        #     'bathroom': bathroom,
+        #     'price' : price,
+        #     'amenities' : amenities,
+        #     'file' : file,
+        #     'pricePred' : 0
+        # })
+
+        
+
+        return Response('yay')
+
 class getPrediction(APIView):
         
     def post(self, request):
         
-        url = 'https://op7v5n6uuk.execute-api.us-east-2.amazonaws.com/getPred'
+        url = os.getenv('AWS_LINK')
 
         data = JsonResponse({
             'data': '1,1,1,1,1,1,1'
         })
 
         response = requests.post(url,data=data)
-
 
         return Response(response)

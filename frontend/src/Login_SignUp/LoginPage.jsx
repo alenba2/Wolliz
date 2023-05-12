@@ -47,7 +47,7 @@ function LoginPage() {
 
     // Data needs to check if it exist in database
     axios
-      .post('api/Login/', data)
+      .post('/api/Login/', data)
       .then((res) => {
         console.log(res)
       })
