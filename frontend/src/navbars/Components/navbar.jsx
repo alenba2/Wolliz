@@ -6,6 +6,11 @@ import backgroundImage from './Wolliz-1.png'
 
 //navbar component for general pages when logged in
 function Navbar() {
+  function handleLogOut(event) {
+    window.localStorage.removeItem('LoginIn')
+    window.location.reload(true)
+  }
+
   return (
     <div
       style={{
@@ -69,7 +74,11 @@ function Navbar() {
                 </a>
               </li>
             </ul>
-            <button className='btn me-2' id='signOut' type='button'>
+            <button
+              className='btn me-2'
+              id='signOut'
+              type='button'
+              onClick={(e) => handleLogOut(e)}>
               Sign Out
             </button>
           </div>

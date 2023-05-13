@@ -1,6 +1,6 @@
 import SellerBox from './Components/SellerBox'
 import './Seller.css'
-import Navbars from '../navbars/navbar'
+import Navbars from '../navbars/NaviBar'
 import { Image } from 'react-bootstrap'
 import backgroundImage from './Images/image1.jpg'
 import { useRef, useState, useEffect } from 'react'
@@ -17,6 +17,17 @@ function SellerPage() {
   const [price, setPrice] = useState('')
   const [amenities, setAmenities] = useState('')
   const [file, setFile] = useState('')
+
+  const [loggedIn, setLogin] = useState(false)
+
+  useEffect(() => {
+    const storedData = window.localStorage.getItem('LoginIn')
+
+    if (storedData != null) {
+      console.log('hit')
+      setLogin(true)
+    }
+  }, [])
 
   // Used to get information
   // useEffect(() => {
@@ -106,7 +117,7 @@ function SellerPage() {
         style={{
           position: 'relative',
         }}>
-        <Navbars />
+        <Navbars isLoggedIn={loggedIn} />
       </div>
 
       <div className='SellerSize'>

@@ -129,9 +129,11 @@ class Login(APIView):
             if user.val()['email'] != email or user.val()['password'] != password:
                 continue
 
-            return Response('Success: User has been found')
+            print(user.key())
 
-        return Response('Error: User does not exist or Password is not correct')
+            return Response(user.key(), status=status.HTTP_202_ACCEPTED)
+
+        return Response('Error: User does not exist or Password is not correct', status=status.HTTP_400_BAD_REQUEST)
 
 
 class Signup(APIView):
