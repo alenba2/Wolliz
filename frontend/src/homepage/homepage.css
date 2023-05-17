@@ -5,3 +5,35 @@
     left: 32%;
     color: white;
 }
+
+
+.search
+{
+    position: absolute;
+    top: 30%;
+    left: 23.5%;
+    width: 150%;
+    
+}
+
+.searchInputs
+{
+    margin-top: 0%;
+    display: flex;
+}
+
+.search input {
+    background-color: white;
+    border-radius: 10px;
+    border-color: grey;
+    font-size: 18px;
+    padding: 15px;
+    height: 2%;
+    width: 40%;
+}
+
+.searchIcon 
+{
+    height: 60px;
+
+}

@@ -58,16 +58,6 @@ function Navbar() {
           </div>
           <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
             <ul className='navbar-nav ms-auto'>
-              <li className='nav-item'>
-                <a className='nav-link' href='#'>
-                  Profile
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#'>
-                  Account Settings
-                </a>
-              </li>
             </ul>
             <button className='btn me-2' id='signOut' type='button'>
               Sign Out
