@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbars from '../navbars/navbar';
+import Navbars from '../navbars/NaviBar';
 import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import backgroundImage from './images/Background1.png';
+import { useRef, useState, useEffect } from 'react'
 import { Image } from 'react-bootstrap';
 
 export default function Homepage() {
   const [searchAddress, setSearchAddress] = useState('');
+  const [loggedIn, setLogin] = useState(false)
   const navigate = useNavigate(); // Access the navigation object
+
+  useEffect(() => {
+    const storedData = window.localStorage.getItem('LoginIn')
+
+    if (storedData != null) {
+      console.log('hit')
+      setLogin(true)
+    }
+  }, [])
 
   const fetchData = async (address) => {
 
@@ -44,7 +54,7 @@ export default function Homepage() {
 
   return (
     <div id="homecontainer">
-      <Navbars />
+     <Navbars isLoggedIn={loggedIn} />
 
       <div className="imageContainer">
         <Image

@@ -1,5 +1,5 @@
 import LoginBox from './Components/LoginBox'
-import Navbars from '../navbars/navbar'
+import Navbars from '../navbars/NaviBar'
 import './Login.css'
 import { Image } from 'react-bootstrap'
 import backgroundImage from './Images/Background1.png'
@@ -9,27 +9,6 @@ import axios from 'axios'
 function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  // Used to get information
-  // useEffect(() => {
-  //   let data = new FormData()
-  //   data = data.append('data', '1,1,1,1,1,1,1')
-
-  //   axios
-  //     .post(
-  //       'https://op7v5n6uuk.execute-api.us-east-2.amazonaws.com/getPred',
-  //       data,
-  //       {
-  //         headers: {
-  //           'Access-Control-Allow-Origin': '*',
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log(res)
-  //     })
-  //     .catch((err) => console.log(err))
-  // }, [])
 
   function handleCallBackEmail(event) {
     setEmail(event)
@@ -42,6 +21,9 @@ function LoginPage() {
   function handleCallBackSubmit(event) {
     event.preventDefault() // 👈️ prevent page refresh
 
+    const storedData = window.localStorage.getItem('LoginIn')
+    console.log(storedData)
+
     let data = new FormData()
 
     data.append('email', email)
@@ -52,6 +34,9 @@ function LoginPage() {
       .post('http://localhost:8000/api/Login/', data)
       .then((res) => {
         console.log(res)
+
+        //saves in local storage
+        window.localStorage.setItem('LoginIn', JSON.stringify(res.data))
       })
       .catch((err) => console.log(err))
   }
@@ -75,7 +60,7 @@ function LoginPage() {
         style={{
           position: 'relative',
         }}>
-        <Navbars />
+        <Navbars isLoggedIn={false} />
       </div>
 
       <div className='LoginSize'>

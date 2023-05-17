@@ -1,5 +1,5 @@
 import SignUpBox from './Components/SignUpBox'
-import Navbars from '../navbars/navbar'
+import Navbars from '../navbars/NaviBar'
 import './Login.css'
 import { Image } from 'react-bootstrap'
 import backgroundImage from './Images/Background2.png'
