@@ -5,6 +5,7 @@ import { Image } from 'react-bootstrap'
 import backgroundImage from './Images/image1.jpg'
 import { useRef, useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function SellerPage() {
   const [address, setAddress] = useState('')
@@ -28,6 +29,8 @@ function SellerPage() {
       setLogin(true)
     }
   }, [])
+
+  const navigate = useNavigate()
 
   // Used to get information
   // useEffect(() => {
@@ -77,8 +80,10 @@ function SellerPage() {
   function handleCallBackSubmit(event) {
     event.preventDefault() // 👈️ prevent page refresh
 
-    let data = new FormData()
+    const storedData = window.localStorage.getItem('LoginIn')
 
+    let data = new FormData()
+    data.append('id', storedData)
     data.append('address', address)
     data.append('state', state)
     data.append('city', city)
@@ -94,6 +99,7 @@ function SellerPage() {
     axios
       .post('http://localhost:8000/api/pushHouseInfo/', data)
       .then((res) => {
+        navigate('/UserListing')
         console.log(res)
       })
       .catch((err) => console.log(err))

@@ -5,10 +5,13 @@ import { Image } from 'react-bootstrap'
 import backgroundImage from './Images/Background1.png'
 import { useRef, useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
 
   function handleCallBackEmail(event) {
     setEmail(event)
@@ -37,6 +40,8 @@ function LoginPage() {
 
         //saves in local storage
         window.localStorage.setItem('LoginIn', JSON.stringify(res.data))
+
+        navigate('/Homepage')
       })
       .catch((err) => console.log(err))
   }

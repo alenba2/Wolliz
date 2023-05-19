@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function SignUpBox(props) {
   return (
@@ -51,7 +52,9 @@ function SignUpBox(props) {
           <br />
           <br />
 
-          <Form.Text>Have an Account? Sign In</Form.Text>
+          <Form.Text>
+            <Link to='/'>Have an Account? Sign In</Link>
+          </Form.Text>
         </Form>
       </Card.Body>
     </Card>

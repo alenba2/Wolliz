@@ -1,12 +1,13 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function LoginBox(props) {
   return (
     <Card style={{ width: '30rem' }}>
       <Card.Body>
-        <Card.Title style={{ textAlign: 'center' }}>Log In</Card.Title>
+        <Card.Title style={{ textAlign: 'center' }}>Sign In</Card.Title>
         <Form>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Label>Email address</Form.Label>
@@ -39,7 +40,9 @@ function LoginBox(props) {
           </Button>
           <br />
           <br />
-          <Form.Text>Dont have a account? Sign up</Form.Text>
+          <Form.Text>
+            <Link to='/SignUp'>Dont have a account? Sign up</Link>
+          </Form.Text>
         </Form>
       </Card.Body>
     </Card>

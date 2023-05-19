@@ -29,4 +29,5 @@ urlpatterns = [
     path('api/Signup/', views.Signup.as_view() , name='Signup'),
     path('api/getPrediction/', views.getPrediction.as_view() , name='GetPrediction'),
     path('api/pushHouseInfo/', views.pushHouseInfo.as_view() , name='pushHouseInfo'),
+    path('api/getHouseInfo/', views.getHouseInfo.as_view() , name='getHouseInfoInfo'),
 ]

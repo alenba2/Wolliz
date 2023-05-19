@@ -3,12 +3,15 @@ import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Image } from 'react-bootstrap'
 import backgroundImage from './Wolliz-1.png'
+import { useNavigate } from 'react-router-dom'
 
 //navbar component for general pages when logged in
 function Navbar() {
+  const navigate = useNavigate()
+
   function handleLogOut(event) {
     window.localStorage.removeItem('LoginIn')
-    window.location.reload(true)
+    navigate('/')
   }
 
   return (
@@ -26,12 +29,12 @@ function Navbar() {
                 </a>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='/HouseInfo'>
+                <a className='nav-link' href='/UserListing'>
                   <small>Dashboard</small>
                 </a>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='UserListing'>
+                <a className='nav-link' href='/SellerPage'>
                   <small>Add a Property</small>
                 </a>
               </li>
@@ -62,8 +65,7 @@ function Navbar() {
             </button>
           </div>
           <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
-            <ul className='navbar-nav ms-auto'>
-            </ul>
+            <ul className='navbar-nav ms-auto'></ul>
             <button
               className='btn me-2'
               id='signOut'

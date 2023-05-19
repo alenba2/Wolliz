@@ -21,7 +21,6 @@ function App() {
       <Route path='/Homepage' element={<Homepage />} />
       <Route path='/Splash' element={<Splash />} />
 
-
       {/* Error Case */}
       {/* <Route element={<LoginPage />} /> */}
     </Routes>

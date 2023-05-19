@@ -5,11 +5,14 @@ import { Image } from 'react-bootstrap'
 import backgroundImage from './Images/Background2.png'
 import { useRef, useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [cpassword, setCPassword] = useState('')
+
+  const navigate = useNavigate()
 
   function handleCallBackEmail(event) {
     setEmail(event)
@@ -47,6 +50,7 @@ function LoginPage() {
       .post('api/Signup/', data)
       .then((res) => {
         console.log(res)
+        navigate('/')
       })
       .catch((err) => console.log(err))
   }

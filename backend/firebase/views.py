@@ -156,9 +156,28 @@ class Signup(APIView):
 
         return Response(res)
 
+class getHouseInfo(APIView):
+    def post(self, request):
+        id = request.POST.get('id', 'NULL')
+
+        data = database.child("HouseListing").get()
+        houseList = []
+        counter = 0
+
+        for housing in data:
+            if housing.val()['id'] == id:
+                houseList.append(housing.val())
+
+                houseList[counter]['id_House'] = housing.key()
+
+                counter += 1
+
+        return Response(houseList)
+
+       
 class pushHouseInfo(APIView):
     def post(self, request):
-
+        id = request.POST.get('id', 'NULL')
         address = request.POST.get('address', 'NULL')
         state = request.POST.get('state', 'NULL')
         city = request.POST.get('city', 'NULL')
@@ -195,24 +214,35 @@ class pushHouseInfo(APIView):
 
         print(to_predict)
 
-        # data = database.child("HouseListing").push({
+        url = os.getenv('AWS_LINK')
 
-        #     'address' : address,
-        #     'state': state,
-        #     'city': city,
-        #     'zip': zip,
-        #     'squareFeet' : squareFeet,
-        #     'bedroom' : bedroom,
-        #     'bathroom': bathroom,
-        #     'price' : price,
-        #     'amenities' : amenities,
-        #     'file' : file,
-        #     'pricePred' : 0
-        # })
+        data = JsonResponse({
+            'data': to_predict
+        })
 
-        
+        response2 = requests.post(url,data=data).json()
 
-        return Response('yay')
+        print(response2)
+
+        # for key, value in response2:
+        #     print(key, value)
+
+        data = database.child("HouseListing").push({
+            'id': id,
+            'address' : address,
+            'state': state,
+            'city': city,
+            'zip': zip,
+            'squareFeet' : squareFeet,
+            'bedroom' : bedroom,
+            'bathroom': bathroom,
+            'price' : price,
+            'amenities' : amenities,
+            'file' : file,
+            'pricePred' : response2[0]
+        })
+
+        return Response(response2)
 
 class getPrediction(APIView):
         
